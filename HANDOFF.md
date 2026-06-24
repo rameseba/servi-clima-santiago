@@ -140,24 +140,38 @@ Insights (infra de Google) debería dar 100.
 
 ---
 
-## Tareas pendientes (necesitan datos del cliente)
+## Seguridad (headers HTTP) — hecho (jun 2026)
 
-1. **Google Search Console (verificación):** el cliente debe crear la propiedad tipo *Dominio*
-   en Search Console y entregar el registro **TXT** `google-site-verification=...`. Luego se crea
-   ese TXT en el DNS de Cloudflare (el token tiene permiso DNS edit) vía API o panel.
+`site/_headers` define en el bloque `/*` (verificado en producción con `curl -sI`):
+`Strict-Transport-Security`, `X-Frame-Options: SAMEORIGIN`, `X-Content-Type-Options: nosniff`,
+`Referrer-Policy: strict-origin-when-cross-origin`,
+`Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()` y
+`Cross-Origin-Opener-Policy: same-origin`.
+- **CSP omitido a propósito:** el sitio usa handlers inline (`oninput` en el form, `onload` en el
+  CSS diferido) y cargará el Google tag de Ads; un CSP útil exigiría `'unsafe-inline'` (lo vacía de
+  sentido) y arriesga romper el tag. Si se refactorizan los inline y se conoce el dominio del tag,
+  agregar un CSP afinado. Está documentado en el propio `_headers`.
 
-2. **Google Ads — Google tag:** el tracking de conversión por clic a WhatsApp YA está cableado
-   en `main.js` (función `trackWhatsApp`, eventos en `dataLayer`). Falta pegar el Google tag real
-   en el `<head>` de `index.html` con el ID de conversión `AW-XXXXXXXXX/ETIQUETA`. Snippet exacto
-   en `README.md` → sección "Google Ads". (Agregar el tag baja un poco el Performance: es un
-   script de terceros esperado; el cliente lo asume para medir campañas.)
+## Tareas pendientes
 
-3. **(Opcional, SEO) Redirección www → apex.** Hoy apex y www sirven lo mismo (la canónica
-   declarada es el apex `serviclimasantiago.cl`). Para unificar, crear `site/_redirects` con:
-   ```
-   https://www.serviclimasantiago.cl/*  https://serviclimasantiago.cl/:splat  301
-   ```
-   y redesplegar. No se hizo aún (pendiente de confirmación del cliente).
+1. ✅ **Google Search Console — HECHO.** El cliente verificó la propiedad tipo *Dominio* e indexó
+   la home (jun 2026). Nada que hacer aquí salvo monitorear cobertura/rendimiento en GSC.
+
+2. **Google Ads — Google tag** *(bloqueado: necesita dato del cliente)*. El tracking de conversión
+   por clic a WhatsApp YA está cableado en `main.js` (`trackWhatsApp`, eventos en `dataLayer`).
+   Falta pegar el Google tag real en el `<head>` de `index.html` con el ID `AW-XXXXXXXXX/ETIQUETA`.
+   Snippet en `README.md` → "Google Ads". Al integrarlo, reevaluar un CSP afinado.
+
+3. **(Opcional, SEO) Redirección www → apex.** **Decisión jun 2026: se deja así** — apex y www
+   sirven lo mismo y la canónica ya apunta al apex (Google no penaliza), así que no es necesario.
+   Si en el futuro se quiere unificar igual: ⚠️ **OJO: `_redirects` NO sirve para esto en Cloudflare
+   Pages** — empareja solo por *ruta*, no por *hostname*, así que una regla `https://www.…/*` queda
+   inerte (se probó y `www` seguía dando 200). Hay que crear una **Redirect Rule de zona**
+   (Cloudflare → Rules → Redirect Rules): si `http.host eq "www.serviclimasantiago.cl"` → 301 a
+   `concat("https://serviclimasantiago.cl", http.request.uri.path)`, preservando query string.
+   El token de `.env.local` (Pages + DNS) **NO tiene permiso de Rulesets** (la API da error 10000),
+   así que se hace en el panel o con un token ampliado. Verificar con
+   `curl -sI https://www.serviclimasantiago.cl/` → debe dar `301` + `Location` al apex.
 
 ## Si vas a hacer cambios de diseño
 
