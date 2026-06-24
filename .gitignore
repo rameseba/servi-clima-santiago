@@ -1,0 +1,16 @@
+node_modules/
+.lh/
+*.log
+.DS_Store
+Thumbs.db
+
+# Artefactos generados (regenerables, no versionar)
+.wrangler/
+localhost_*.report.html
+scratch-*
+
+# Secretos / entorno — nunca subir
+.env
+.env.local
+.env.*.local
+key.txt

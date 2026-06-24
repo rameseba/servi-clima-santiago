@@ -1,0 +1,12 @@
+# ServiClima Santiago
+
+> Servicio técnico profesional a domicilio en la Región Metropolitana de Santiago para lavadoras, refrigeradores, secadoras y aire acondicionado residencial y comercial.
+
+## Enlaces clave
+
+- [Inicio](https://serviclimasantiago.cl/) - Enlace a la página de inicio con información sobre servicios, cotizaciones de WhatsApp y contacto.
+- [Servicios](https://serviclimasantiago.cl/#servicios) - Información de reparaciones de lavadoras, refrigeradores, secadoras y aire acondicionado.
+- [Nosotros](https://serviclimasantiago.cl/#nosotros) - Detalles sobre nuestro servicio a domicilio y equipo de técnicos autorizados.
+- [Preguntas Frecuentes](https://serviclimasantiago.cl/#faq) - Consultas sobre la garantía escrita, tarifas y cobertura en Santiago.
+- [Contacto por WhatsApp](https://wa.me/56948930381) - Chat directo de WhatsApp para agendar visitas técnicas.
+- [Política de Privacidad](https://serviclimasantiago.cl/privacidad) - Información de tratamiento de datos personales.
