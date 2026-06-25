@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var WA = "56948930381"; // WhatsApp (sin + ni espacios)
+  var WA = "56983832944"; // WhatsApp (sin + ni espacios)
 
   /* ---- Conversión: avisar a Google Ads/Analytics en cada contacto por WhatsApp ----
      Funciona apenas se configure el Google tag (ver README). Si no existe, no hace nada. */

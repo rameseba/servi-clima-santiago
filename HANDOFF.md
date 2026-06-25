@@ -63,7 +63,7 @@ Objetivo del cliente: publicarla en Google + invertir en Google Ads.
    `node scripts/serve-prod.mjs 3000` (aplica Brotli + cache, igual que Cloudflare). Con un
    servidor sin compresión, Lighthouse da falsos negativos de rendimiento.
 
-8. **Contacto = SOLO WhatsApp, sin backend.** Número `+56 9 4893 0381` = `56948930381`.
+8. **Contacto = SOLO WhatsApp, sin backend.** Número `+56 9 8383 2944` = `56983832944`.
    Aparece en `site/index.html` (enlaces `wa.me/...`) y en `site/assets/js/main.js` (constante
    `WA`). El formulario NO envía a un servidor: arma un mensaje de WhatsApp (función del form en
    `main.js`). Todos los botones de WhatsApp llevan `data-wa` (dispara el evento de conversión).

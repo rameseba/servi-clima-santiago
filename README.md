@@ -66,8 +66,8 @@ Luego, en el panel del proveedor, apunta el dominio **serviclimasantiago.cl** al
 
 ## Cambiar datos clave
 
-- **Número de WhatsApp** (`+56 9 4893 0381`): está como `56948930381`.
-  - En `site/index.html`: buscar y reemplazar `56948930381`.
+- **Número de WhatsApp** (`+56 9 8383 2944`): está como `56983832944`.
+  - En `site/index.html`: buscar y reemplazar `56983832944`.
   - En `site/assets/js/main.js`: variable `WA` (arriba del archivo).
 - **Dominio** (`serviclimasantiago.cl`): buscar y reemplazar `serviclimasantiago.cl` en
   `site/index.html`, `site/robots.txt` y `site/sitemap.xml`.
