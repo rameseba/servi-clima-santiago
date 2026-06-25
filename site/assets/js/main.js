@@ -84,7 +84,7 @@
       c = cleanString(c);
       var m = cleanString(val("q-msg"));
       
-      var lines = ["Hola ServiClima, quiero cotizar un servicio."];
+      var lines = ["Hola ServiClima, quisiera cotizar un servicio."];
       var s = val("q-service"); if (s) lines.push("Servicio: " + s);
       lines.push("Nombre: " + n);
       lines.push("Teléfono: " + p);
