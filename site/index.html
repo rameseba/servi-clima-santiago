@@ -330,6 +330,14 @@ section{padding:clamp(54px,7.5vw,96px) 0}
 .wa-float svg{width:34px;height:34px}
 @media (max-width:580px){.wa-float{width:58px;height:58px}}
 
+/* ===== Botón flotante Llamar (respaldo directo) ===== */
+.call-float{position:fixed;right:18px;bottom:90px;z-index:200;width:50px;height:50px;border-radius:50%;
+  background:var(--navy);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);
+  transition:transform .16s ease}
+.call-float:hover{transform:scale(1.08);text-decoration:none}
+.call-float svg{width:24px;height:24px}
+@media (max-width:580px){.call-float{width:46px;height:46px;bottom:82px}}
+
 /* ===== Botón flotante de Scroll ===== */
 .scroll-btn{position:fixed;left:18px;bottom:18px;z-index:200;width:62px;height:62px;border-radius:50%;
   background:#fff;color:var(--navy);border:1px solid var(--line);display:grid;place-items:center;
@@ -1058,6 +1066,10 @@ section{padding:clamp(54px,7.5vw,96px) 0}
     </a>
   </div>
 </div>
+
+<a class="call-float" href="tel:+56983832944" aria-label="Llamar a ServiClima">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
 
 <a class="wa-float" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20quisiera%20cotizar%20un%20servicio." aria-label="Escríbenos por WhatsApp">
   <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
