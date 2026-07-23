@@ -400,6 +400,22 @@
   width: 16px;
   height: 16px;
 }
+.wa-chat-btn--call {
+  background: var(--navy);
+}
+.wa-chat-btn--call:hover {
+  background: var(--navy-2);
+}
+.wa-chat-btn--secondary {
+  background: transparent;
+  color: var(--wa);
+  border: 1px solid var(--wa);
+  margin-top: 8px;
+}
+.wa-chat-btn--secondary:hover {
+  background: rgba(10, 125, 58, .08);
+  color: var(--wa-dark);
+}
 @media (max-width: 480px) {
   .wa-chat-bubble {
     width: calc(100% - 36px);

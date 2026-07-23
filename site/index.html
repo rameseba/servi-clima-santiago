@@ -122,6 +122,8 @@ section{padding:clamp(54px,7.5vw,96px) 0}
 .btn .ico{width:1.2em;height:1.2em}
 .btn--wa{background:var(--wa);color:#fff;box-shadow:0 8px 20px -8px rgba(10,125,58,.5)}
 .btn--wa:hover{background:var(--wa-dark)}
+.btn--call{background:var(--navy);color:#fff;box-shadow:0 8px 20px -8px rgba(9,30,58,.5)}
+.btn--call:hover{background:var(--navy-2)}
 .btn--primary{background:var(--azure);color:#fff;box-shadow:0 8px 20px -8px rgba(30,64,175,.4)}
 .btn--primary:hover{background:var(--azure-ink)}
 .btn--ghost{background:#fff;color:var(--navy);border-color:var(--line)}
@@ -318,25 +320,25 @@ section{padding:clamp(54px,7.5vw,96px) 0}
   }
 }
 
-/* ===== Botón flotante WhatsApp ===== */
-.wa-float{position:fixed;right:18px;bottom:18px;z-index:200;width:62px;height:62px;border-radius:50%;
-  background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);
-  transition:transform .16s ease}
-.wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);
-  animation:waPulse 2.6s ease-out infinite}
-@keyframes waPulse{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(1.5);opacity:0}}
-@media (prefers-reduced-motion:reduce){.wa-float::after{animation:none}}
-.wa-float:hover{transform:scale(1.08);text-decoration:none}
-.wa-float svg{width:34px;height:34px}
-@media (max-width:580px){.wa-float{width:58px;height:58px}}
-
-/* ===== Botón flotante Llamar (respaldo directo) ===== */
-.call-float{position:fixed;right:18px;bottom:90px;z-index:200;width:50px;height:50px;border-radius:50%;
+/* ===== Botón flotante Llamar (principal mientras WhatsApp está bloqueado) ===== */
+.call-float{position:fixed;right:18px;bottom:18px;z-index:200;width:62px;height:62px;border-radius:50%;
   background:var(--navy);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);
   transition:transform .16s ease}
+.call-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--navy);
+  animation:waPulse 2.6s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(1.5);opacity:0}}
+@media (prefers-reduced-motion:reduce){.call-float::after{animation:none}}
 .call-float:hover{transform:scale(1.08);text-decoration:none}
-.call-float svg{width:24px;height:24px}
-@media (max-width:580px){.call-float{width:46px;height:46px;bottom:82px}}
+.call-float svg{width:30px;height:30px}
+@media (max-width:580px){.call-float{width:58px;height:58px}}
+
+/* ===== Botón flotante WhatsApp (secundario mientras se resuelve el bloqueo) ===== */
+.wa-float{position:fixed;right:18px;bottom:90px;z-index:200;width:50px;height:50px;border-radius:50%;
+  background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);
+  transition:transform .16s ease}
+.wa-float:hover{transform:scale(1.08);text-decoration:none}
+.wa-float svg{width:26px;height:26px}
+@media (max-width:580px){.wa-float{width:46px;height:46px;bottom:82px}}
 
 /* ===== Botón flotante de Scroll ===== */
 .scroll-btn{position:fixed;left:18px;bottom:18px;z-index:200;width:62px;height:62px;border-radius:50%;
@@ -397,6 +399,7 @@ section{padding:clamp(54px,7.5vw,96px) 0}
   window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
   gtag('js',new Date()); gtag('config','AW-18279317655');
   window.SERVICLIMA_ADS_CONVERSION='AW-18279317655/cxxKCM_qlcccEJeBoYxE';
+  window.SERVICLIMA_ADS_CONVERSION_CALL='AW-18279317655/AktmCMO2wdUcEJeBoYxE';
 </script>
 </head>
 <body>
@@ -405,6 +408,7 @@ section{padding:clamp(54px,7.5vw,96px) 0}
 <!-- Sprite de íconos -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="ico-wa" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></symbol>
+  <symbol id="ico-call" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
 </svg>
 
 <!-- Topbar -->
@@ -419,8 +423,8 @@ section{padding:clamp(54px,7.5vw,96px) 0}
       Región Metropolitana
     </span>
     <span class="ti">
-      <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
-      <a data-wa href="https://wa.me/56983832944">+56 9 8383 2944</a>
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-call"></use></svg>
+      <a href="tel:+56983832944">+56 9 8383 2944</a>
     </span>
   </div>
 </div>
@@ -445,9 +449,9 @@ section{padding:clamp(54px,7.5vw,96px) 0}
       </ul>
     </nav>
     <div class="header-cta">
-      <a class="btn btn--wa" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20quisiera%20cotizar%20un%20servicio.">
-        <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
-        Cotizar
+      <a class="btn btn--call" href="tel:+56983832944">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-call"></use></svg>
+        Llamar ahora
       </a>
     </div>
   </div>
@@ -462,6 +466,10 @@ section{padding:clamp(54px,7.5vw,96px) 0}
         <h1 id="hero-title">Aire acondicionado que<br><span class="hl">te da confort todo el año</span></h1>
         <p class="lead">Especialistas en instalación, mantención y reparación de aire acondicionado en Santiago y toda la Región Metropolitana, con repuestos originales y garantía escrita. ¿También tienes una falla en línea blanca? La gestionamos contigo.</p>
         <div class="hero-cta">
+          <a class="btn btn--call btn--lg" href="tel:+56983832944">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-call"></use></svg>
+            Llama ahora
+          </a>
           <a class="btn btn--wa btn--lg" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20quisiera%20cotizar%20un%20servicio.">
             <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
             Cotiza por WhatsApp
@@ -497,7 +505,11 @@ section{padding:clamp(54px,7.5vw,96px) 0}
     <div class="container">
       <div class="quote-card">
         <h2 id="quote-title">Cotiza tu servicio en 1 minuto</h2>
-        <p class="sub">Completa estos datos y abrimos un WhatsApp con tu mensaje listo para enviar. Te respondemos a la brevedad.</p>
+        <p class="sub">Llámanos directamente o completa estos datos y te escribimos por WhatsApp. Te respondemos a la brevedad.</p>
+        <a class="btn btn--call btn--lg btn--block" href="tel:+56983832944" style="margin-bottom:18px">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-call"></use></svg>
+          Llamar ahora
+        </a>
         <form id="quote-form" novalidate>
           <div class="quote-grid">
             <div class="field">
@@ -979,11 +991,17 @@ section{padding:clamp(54px,7.5vw,96px) 0}
       <div class="cta">
         <p class="eyebrow on-dark" style="justify-content:center">Hablemos</p>
         <h2 id="cta-title">¿Tienes dudas o quieres cotizar?</h2>
-        <p>Escríbenos por WhatsApp y te ayudamos a elegir, instalar o reparar tu aire acondicionado. Respuesta rápida y atención en toda la RM.</p>
-        <a class="btn btn--wa btn--lg" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20quisiera%20cotizar%20un%20servicio.">
-          <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
-          +56 9 8383 2944
-        </a>
+        <p>Llámanos o escríbenos por WhatsApp y te ayudamos a elegir, instalar o reparar tu aire acondicionado. Respuesta rápida y atención en toda la RM.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:6px">
+          <a class="btn btn--call btn--lg" href="tel:+56983832944">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-call"></use></svg>
+            +56 9 8383 2944
+          </a>
+          <a class="btn btn--wa btn--lg" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20quisiera%20cotizar%20un%20servicio.">
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
+            WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1018,8 +1036,8 @@ section{padding:clamp(54px,7.5vw,96px) 0}
       <div class="footer-contact">
         <h3>Contacto</h3>
         <ul>
-          <li><a class="fc-wa" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20quisiera%20cotizar%20un%20servicio.">
-            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
+          <li><a class="fc-wa" href="tel:+56983832944">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-call"></use></svg>
             +56 9 8383 2944</a></li>
           <li style="margin-top:.5rem">Lun a Sáb · 9:00 – 18:00</li>
           <li>Región Metropolitana, Chile</li>
@@ -1060,9 +1078,13 @@ section{padding:clamp(54px,7.5vw,96px) 0}
     <p class="wa-chat-msg-in">¡Hola! 👋 ¿En qué te podemos ayudar hoy? Escríbenos para cotizar tu instalación, mantención o reparación.</p>
   </div>
   <div class="wa-chat-footer">
-    <a class="wa-chat-btn" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20necesito%20coordinar%20un%20servicio%20de%20climatizaci%C3%B3n.">
+    <a class="wa-chat-btn wa-chat-btn--call" href="tel:+56983832944">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-call"></use></svg>
+      Llamar ahora
+    </a>
+    <a class="wa-chat-btn wa-chat-btn--secondary" data-wa href="https://wa.me/56983832944?text=Hola%20ServiClima%2C%20necesito%20coordinar%20un%20servicio%20de%20climatizaci%C3%B3n.">
       <svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><use href="#ico-wa"></use></svg>
-      Iniciar chat de WhatsApp
+      O escríbenos por WhatsApp
     </a>
   </div>
 </div>
@@ -1098,6 +1120,6 @@ section{padding:clamp(54px,7.5vw,96px) 0}
   <span class="lightbox-count" id="lb-count"></span>
 </div>
 
-<script src="/assets/js/main.js?v=1.0.6" defer></script>
+<script src="/assets/js/main.js?v=1.0.7" defer></script>
 </body>
 </html>

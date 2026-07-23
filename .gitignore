@@ -14,3 +14,6 @@ scratch-*
 .env.local
 .env.*.local
 key.txt
+
+graphify-out/
+.graphify_python

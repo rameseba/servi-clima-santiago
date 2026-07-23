@@ -19,6 +19,21 @@
     el.addEventListener("click", function () { trackWhatsApp("link"); });
   });
 
+  /* ---- Conversión: avisar a Google Ads/Analytics en cada clic a un número tel: ----
+     Funciona apenas se configure el Google tag de esta conversión (ver README). */
+  function trackCall(origin) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "call_click", origin: origin || "site" });
+      if (typeof window.gtag === "function" && window.SERVICLIMA_ADS_CONVERSION_CALL) {
+        window.gtag("event", "conversion", { send_to: window.SERVICLIMA_ADS_CONVERSION_CALL });
+      }
+    } catch (e) {}
+  }
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (el) {
+    el.addEventListener("click", function () { trackCall("link"); });
+  });
+
   /* ---- Menú móvil ---- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("nav-menu");
