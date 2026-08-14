@@ -610,3 +610,17 @@
 @media (prefers-reduced-motion: reduce) {
   .gallery-item img, .gallery-zoom { transition: none; }
 }
+
+/* Migas de pan de las páginas por servicio */
+.crumbs {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.crumbs a { color: inherit; text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+.crumbs span[aria-hidden] { margin: 0 6px; opacity: 0.6; }
+
+/* Títulos de tarjeta que enlazan a su página de servicio */
+.card-service h3 a { color: inherit; text-decoration: none; }
+.card-service h3 a:hover, .card-service h3 a:focus-visible { text-decoration: underline; }

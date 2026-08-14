@@ -6,6 +6,24 @@
 
   /* ---- Conversión: avisar a Google Ads/Analytics en cada contacto por WhatsApp ----
      Funciona apenas se configure el Google tag (ver README). Si no existe, no hace nada. */
+  /* ---- Conversiones avanzadas (Enhanced Conversions for leads) ----
+     Le pasa a Google el teléfono que el propio cliente escribió en el formulario, en formato
+     E.164 (+569XXXXXXXX). Google lo hashea en el navegador antes de enviarlo; nosotros no
+     guardamos nada ni lo mandamos a ningún servidor propio.
+     Sirve para que Ads reconozca conversiones que hoy se pierden y así el CPA baje.
+     REQUISITO: en Google Ads hay que activar "Conversiones avanzadas para clientes potenciales"
+     y aceptar los términos de datos del cliente (lo hace el dueño de la cuenta).
+     Si no está activado, esta llamada es inofensiva: Google simplemente la ignora. */
+  function setUserData(rawPhone) {
+    try {
+      if (typeof window.gtag !== "function" || !rawPhone) return;
+      var digits = String(rawPhone).replace(/\D/g, "");     // "+56 9 1234 5678" -> "56912345678"
+      if (digits.length === 9) digits = "56" + digits;      // por si escribieron sin el +56
+      if (digits.length !== 11) return;                     // formato inesperado: no enviamos nada
+      window.gtag("set", "user_data", { phone_number: "+" + digits });
+    } catch (e) {}
+  }
+
   function trackWhatsApp(origin) {
     try {
       window.dataLayer = window.dataLayer || [];
@@ -106,6 +124,7 @@
       lines.push("Comuna: " + c);
       if (m) lines.push("Mensaje: " + m);
       
+      setUserData(p);          // conversiones avanzadas: el teléfono va hasheado por Google
       trackWhatsApp("form");
       window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(lines.join("\n")), "_blank", "noopener");
     });
